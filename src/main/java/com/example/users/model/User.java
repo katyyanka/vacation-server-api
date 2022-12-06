@@ -1,9 +1,7 @@
 package com.example.users.model;
 
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -16,10 +14,13 @@ import java.io.Serializable;
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class User  implements Serializable {
     @Id
     private Long personnel_number;
     private String username;
     private String password;
     private boolean enabled;
+
 }

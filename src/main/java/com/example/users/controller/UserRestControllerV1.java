@@ -16,11 +16,9 @@ import java.util.List;
 @RequestMapping("api/v1/users")
 public class UserRestControllerV1 {
     private final UserService userService;
-
     public UserRestControllerV1(UserService userService) {
         this.userService = userService;
     }
-
     @RequestMapping(value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> getUser(@PathVariable("id") Long userID){
         if (userID == null){
@@ -74,6 +72,11 @@ public class UserRestControllerV1 {
         }
 
         return new ResponseEntity<>(users, HttpStatus.OK);
+    }
+
+    @GetMapping("/login")
+    public String login(){
+        return "login";
     }
 
 }
