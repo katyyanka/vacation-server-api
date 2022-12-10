@@ -13,7 +13,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/users")
+@RequestMapping("api/users")
 public class UserRestControllerV1 {
     private final UserService userService;
     public UserRestControllerV1(UserService userService) {
@@ -27,6 +27,18 @@ public class UserRestControllerV1 {
         User user = this.userService.getByID(userID);
         if (user == null) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "user/{username}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<User> getUser(@PathVariable("username") String username){
+        if (username == null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        User user = this.userService.getByUsername(username);
+        if (user == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(user, HttpStatus.OK);
     }

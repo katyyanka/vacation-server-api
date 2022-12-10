@@ -1,5 +1,6 @@
 package com.example.users.security;
 
+import com.example.users.model.Role;
 import com.example.users.model.User;
 import com.example.users.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Component
 public class MyUserDetailsService implements UserDetailsService {
@@ -34,4 +32,5 @@ public class MyUserDetailsService implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(user.getUsername(),
                 user.getPassword(), user.isEnabled(), true, true, true, authorities);
     }
+
 }

@@ -1,18 +1,21 @@
 package com.example.users.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
-
 @Entity
-@Table(name = "countries")
+@Table( name="contacts")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Country {
-    @Id
-    String country;
+@AllArgsConstructor
+public class Contact {
+    @EmbeddedId
+    ContactId contactId;
+
+    String value;
+
 }

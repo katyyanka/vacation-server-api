@@ -33,6 +33,4 @@ public class AuthController {
         return Objects.nonNull(user) ? this.service.getByLogin(user.getUsername()) : null;
     }
 
-
-
 }

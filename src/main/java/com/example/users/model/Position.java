@@ -8,11 +8,14 @@ import lombok.Setter;
 import java.util.Set;
 
 @Entity
-@Table(name = "countries")
+@Table(name = "positions")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Country {
+public class Position {
     @Id
-    String country;
+    String position;
+
+ //   @OneToMany(fetch = FetchType.EAGER, mappedBy = "position")
+  //  transient private Set<Employee> employees;
 }

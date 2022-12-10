@@ -1,13 +1,12 @@
 package com.example.users.model;
 
 
+import jakarta.persistence.*;
 import lombok.*;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Entity
 @Table (name = "users")
@@ -22,5 +21,14 @@ public class User  implements Serializable {
     private String username;
     private String password;
     private boolean enabled;
+    @ManyToMany( fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(
+                    name = "personnel_number"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id"))
+    private  Collection<Role> roles;
+
 
 }
